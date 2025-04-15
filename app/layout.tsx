@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
+import { ReactQueryClientProvider } from "@/components/ReactQueryClientProvider";
+import { Navigation } from "@/components/Navigation";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,22 +25,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <nav
-          style={{
-            display: "flex",
-            gap: "60px",
-            justifyContent: "center",
-            padding: "10px 0",
-          }}
-        >
-          <Link href="/">Main</Link>
-          <Link href="random">Random Cat</Link>
-          <Link href="clicker">Clicker Game</Link>
-        </nav>
-        {children}
-      </body>
-    </html>
+    <ReactQueryClientProvider>
+      <html lang="en">
+        <head>
+          <link
+            rel="shortcut icon"
+            href="/favicon.png"
+            type="image/png"
+            sizes="any"
+          />
+        </head>
+        <body className={`${geistSans.variable} ${geistMono.variable}`}>
+          <Navigation />
+          {children}
+        </body>
+      </html>
+    </ReactQueryClientProvider>
   );
 }

@@ -35,10 +35,9 @@ a {
   text-decoration: none;
 }
 
-/* img {
-  max-width: 100%;
-  aspect-ratio: 1 / 1;
-} */
+button:hover {
+  cursor: pointer;
+}
 
 @media (prefers-color-scheme: dark) {
   html {
