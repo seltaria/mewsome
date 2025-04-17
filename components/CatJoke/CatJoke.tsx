@@ -16,7 +16,10 @@ const getImage = async () => {
   return data.json();
 };
 
-const getCatData = async (apiKey: string, url: Record<string, string>[]) => {
+const getCatData = async (
+  apiKey: string | undefined,
+  url: Record<string, string>[]
+) => {
   const client = new Mistral({ apiKey });
   const imageUrl = url?.[0]?.url;
 
@@ -117,9 +120,8 @@ export const CatJoke: FC<CatJokeProps> = ({ apiKey }) => {
     refetch();
   };
 
+  const jokeText = joke?.choices?.[0]?.message?.content;
   const addToFavorite = () => {
-    const jokeText = joke?.choices?.[0]?.message?.content;
-
     if (user) {
       addSingleItem({
         imageUrl: image?.[0]?.url,
@@ -150,7 +152,7 @@ export const CatJoke: FC<CatJokeProps> = ({ apiKey }) => {
           <Loader />
         </div>
       )}
-      {joke && <p>{joke.choices?.[0]?.message?.content}</p>}
+      {typeof jokeText === "string" && <p>{jokeText}</p>}
       {image?.[0]?.url && (
         <div className={styles.image}>
           <Image
