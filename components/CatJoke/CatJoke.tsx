@@ -147,37 +147,44 @@ export const CatJoke: FC<CatJokeProps> = ({ apiKey }) => {
 
   return (
     <div className={styles.wrapper}>
-      {(isImageFetching || isJokeFetching) && (
-        <div className={styles.loader}>
-          <Loader />
-        </div>
-      )}
-      {typeof jokeText === "string" && <p>{jokeText}</p>}
-      {image?.[0]?.url && (
-        <div className={styles.image}>
-          <Image
-            src={image?.[0]?.url}
-            alt="cat"
-            fill
-            objectFit="contain"
-            objectPosition="top"
-          />
-        </div>
-      )}
-      <button
-        className={styles.likeButton}
-        onClick={addToFavorite}
-        title="Добавить в избранное"
-      >
-        <Image alt="add to fav" src="/like.png" width={50} height={50} />
-      </button>
-      <button
-        className={styles.nextCatButton}
-        onClick={getCat}
-        title="Другой котик"
-      >
-        <Image alt="next cat" src="/redo.png" width={50} height={50} />
-      </button>
+      <div className={styles.card}>
+        {(isImageFetching || isJokeFetching) && (
+          <div className={styles.loader}>
+            <Loader />
+          </div>
+        )}
+
+        {typeof jokeText === "string" && <p>{jokeText}</p>}
+
+        {image?.[0]?.url && (
+          <div className={styles.image}>
+            <Image
+              src={image?.[0]?.url}
+              alt="cat"
+              fill
+              objectFit="contain"
+              objectPosition="top"
+            />
+          </div>
+        )}
+      </div>
+
+      <div className={styles.buttons}>
+        <button
+          className={styles.likeButton}
+          onClick={addToFavorite}
+          title="Добавить в избранное"
+        >
+          <Image alt="add to fav" src="/like.png" width={50} height={50} />
+        </button>
+        <button
+          className={styles.nextCatButton}
+          onClick={getCat}
+          title="Другой котик"
+        >
+          <Image alt="next cat" src="/redo.png" width={50} height={50} />
+        </button>
+      </div>
     </div>
   );
 };

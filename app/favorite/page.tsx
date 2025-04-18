@@ -28,14 +28,16 @@ export default async function FavoriteCats() {
     <div className={styles.list}>
       {favs.map((el) => (
         <div key={el.id} className={styles.post}>
-          <div>{decodeURIComponent(el.joke)}</div>
-          <Image
-            alt="cat"
-            src={el.image_url}
-            width={200}
-            height={200}
-            objectFit="cover"
-          />
+          <div className={styles.image}>
+            <Image
+              alt="cat"
+              src={el.image_url}
+              fill
+              objectFit="contain"
+              loading="lazy"
+            />
+          </div>
+          <div className={styles.joke}>{decodeURIComponent(el.joke)}</div>
         </div>
       ))}
     </div>

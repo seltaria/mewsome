@@ -1,3 +1,5 @@
+@use "../styles/variables" as *;
+
 .page {
   --gray-rgb: 0, 0, 0;
   --gray-alpha-200: rgba(var(--gray-rgb), 0.08);
@@ -16,7 +18,12 @@
   margin: 50px auto;
 
   a {
-    color: #177162;
+    color: $green;
+    transition: color $transition-duration ease-in-out;
+
+    &:hover {
+      color: $light-green;
+    }
   }
 }
 

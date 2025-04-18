@@ -2,6 +2,7 @@
 
 import { createClient } from "@/utils/supabase/client";
 import { redirect } from "next/navigation";
+import styles from "./LogoutButton.module.scss";
 
 export const LogoutButton = ({ ...props }) => {
   const supabase = createClient();
@@ -11,7 +12,7 @@ export const LogoutButton = ({ ...props }) => {
   };
 
   return (
-    <button onClick={logout} {...props}>
+    <button className={styles.button} onClick={logout} {...props}>
       Выйти
     </button>
   );

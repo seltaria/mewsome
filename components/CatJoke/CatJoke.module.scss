@@ -1,3 +1,5 @@
+@use "../../styles/variables" as *;
+
 .wrapper {
   position: relative;
   display: flex;
@@ -5,8 +7,18 @@
   max-width: 600px;
   padding: 20px;
   margin: 30px auto;
-  flex-direction: column;
-  align-items: center;
+
+  .card {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+    width: 490px;
+
+    p {
+      text-align: center;
+    }
+  }
 }
 
 .image {
@@ -15,43 +27,43 @@
   height: 300px;
 }
 
-.likeButton {
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
-  align-items: center;
-  gap: 4px;
-  justify-content: center;
-  border: none;
-  border-radius: 4px;
-  padding: 0;
-  background: none;
-  transition: transform 0.3s ease-in-out;
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 
-  img {
-    border-radius: 50px;
-  }
-
-  &:hover {
-    transform: scale(1.2);
-  }
-}
-
-.nextCatButton {
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  transform: scaleX(-1);
-  background: none;
-  border: none;
-  transition: transform 0.3s ease-in-out;
+  .likeButton {
+    align-items: center;
+    gap: 4px;
+    justify-content: center;
+    border: none;
+    border-radius: 4px;
+    padding: 0;
+    background: none;
+    transition: transform $transition-duration ease-in-out;
   
-  img {
-    border-radius: 50px;
+    img {
+      border-radius: 50px;
+    }
+  
+    &:hover {
+      transform: scale(1.2);
+    }
   }
-
-  &:hover {
-    transform: scaleX(-1.2) scaleY(1.2);
+  
+  .nextCatButton {
+    transform: scaleX(-1);
+    background: none;
+    border: none;
+    transition: transform $transition-duration ease-in-out;
+    
+    img {
+      border-radius: 50px;
+    }
+  
+    &:hover {
+      transform: scaleX(-1.2) scaleY(1.2);
+    }
   }
 }
 
