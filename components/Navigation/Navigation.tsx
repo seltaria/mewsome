@@ -26,8 +26,6 @@ export const Navigation = () => {
     });
   }, [supabase]);
 
-  console.log({ pathname });
-
   return (
     <nav className={styles.nav}>
       {links.map(

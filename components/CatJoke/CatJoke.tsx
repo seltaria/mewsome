@@ -54,7 +54,7 @@ const addSingleItem = async ({
   userId: string;
 }) => {
   const supabase = createClient();
-  const { data, error } = await supabase
+  const { error } = await supabase
     .from("favorites")
     .insert([
       {
@@ -71,7 +71,7 @@ const addSingleItem = async ({
   }
 
   // TODO: notify user
-  console.log("Добавлено:", data);
+  alert("Добавлено");
 };
 
 interface CatJokeProps {

@@ -1,3 +1,5 @@
+@use "../../styles/variables" as *;
+
 .list {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -43,5 +45,22 @@
         display: block;
       }
     }
+  }
+}
+
+.button {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+  background-color: $red;
+  border: none;
+  z-index: 1;
+  transition: background-color $transition-duration ease-in-out;
+
+  &:hover {
+    background-color: $dark-red;
   }
 }
