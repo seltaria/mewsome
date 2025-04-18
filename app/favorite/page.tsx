@@ -1,6 +1,7 @@
 import { createClient } from "@/utils/supabase/server";
 import { redirect } from "next/navigation";
 import { FavoriteList } from "@/components/FavoriteList";
+import { ScrollToTopButton } from "@/components/ScrollToTopButton";
 
 export default async function FavoriteCats() {
   const supabase = await createClient();
@@ -13,5 +14,10 @@ export default async function FavoriteCats() {
     redirect("/login");
   }
 
-  return <FavoriteList />;
+  return (
+    <>
+      <FavoriteList />
+      <ScrollToTopButton />
+    </>
+  );
 }
