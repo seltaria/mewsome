@@ -5,6 +5,7 @@ import Image from "next/image";
 import { Loader } from "../Loader";
 import { createClient } from "@/utils/supabase/client";
 import styles from "./FavoriteList.module.scss";
+import { toast, ToastContainer } from "react-toastify";
 
 export const FavoriteList = () => {
   const supabase = createClient();
@@ -39,7 +40,7 @@ export const FavoriteList = () => {
 
     if (error) {
       setFavorites(initialItems);
-      alert("Ошибка удаления");
+      toast("Ошибка удаления");
     }
   };
 
@@ -70,6 +71,7 @@ export const FavoriteList = () => {
           <div className={styles.joke}>{decodeURIComponent(el.joke)}</div>
         </div>
       ))}
+      <ToastContainer position="bottom-right" />
     </div>
   );
 };

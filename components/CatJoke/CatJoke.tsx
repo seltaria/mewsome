@@ -10,6 +10,7 @@ import { FC, useEffect, useState } from "react";
 import { createClient } from "@/utils/supabase/client";
 import { User } from "@supabase/supabase-js";
 import { redirect } from "next/navigation";
+import { toast, ToastContainer } from "react-toastify";
 
 const getImage = async () => {
   const data = await fetch("https://api.thecatapi.com/v1/images/search");
@@ -70,8 +71,7 @@ const addSingleItem = async ({
     return;
   }
 
-  // TODO: notify user
-  alert("Добавлено");
+  toast("Добавлено");
 };
 
 interface CatJokeProps {
@@ -185,6 +185,7 @@ export const CatJoke: FC<CatJokeProps> = ({ apiKey }) => {
           <Image alt="next cat" src="/redo.png" width={50} height={50} />
         </button>
       </div>
+      <ToastContainer position="bottom-right" />
     </div>
   );
 };
