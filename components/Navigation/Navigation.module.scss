@@ -5,7 +5,14 @@
   gap: 60px;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   padding: 10px 0;
+
+  @media (max-width: 680px) {
+    justify-content: space-around;
+    gap: 20px;
+    font-size: 14px;
+  }
 
   a {
     border-bottom: 1px solid transparent;

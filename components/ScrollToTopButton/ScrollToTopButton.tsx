@@ -1,9 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import styles from "./ScrollToTopButton.module.scss";
 import { useEffect, useState } from "react";
 import clsx from "clsx";
+import { ArrowIcon } from "../icons";
 
 export const ScrollToTopButton = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -33,7 +33,7 @@ export const ScrollToTopButton = () => {
       className={clsx(styles.button, !isVisible && styles.invisible)}
       onClick={scrollToTop}
     >
-      <Image alt="arrow" src="/arrow_up.svg" width={30} height={30} />
+      <ArrowIcon size={30} />
     </button>
   );
 };

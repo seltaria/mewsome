@@ -8,6 +8,14 @@
   margin: 0 auto;
   padding: 50px 100px;
 
+  @media (max-width: 680px) {
+    padding: 30px;
+  }
+
+  @media (max-width: 450px) {
+    grid-template-columns: 1fr;
+  }
+
   .post {
     position: relative;
     display: flex;
@@ -21,7 +29,7 @@
     height: fit-content;
 
     .joke {
-      font-size: clamp(14px, 1.6vw, 1rem);
+      font-size: clamp(12px, 1.6vw, 1rem);
     }
 
     .image {
