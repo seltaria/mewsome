@@ -1,0 +1,78 @@
+@use "../../styles/variables" as *;
+
+.post {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  max-width: 400px;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  padding: 10px;
+  height: fit-content;
+
+  .joke {
+    font-size: clamp(12px, 1.6vw, 1rem);
+  }
+
+  .image {
+    position: relative;
+    max-width: 380px;
+    min-height: 100px;
+    width: 100%;
+
+    img {
+      position: unset !important;
+      height: fit-content !important;
+    }
+  }
+}
+
+.wrapper {
+  position: relative;
+
+  .deleteButton {
+    top: 20px;
+    right: 30px;
+    background-color: $red;
+    z-index: 1;
+  
+    &:hover {
+      background-color: $dark-red;
+    }
+  }
+
+  .downloadButton {
+    top: 20px;
+    left: 30px;
+    background-color: $green;
+
+    &:hover {
+      background-color: $light-green;
+    }
+
+    svg {
+      path {
+        fill: white;
+      }
+    }
+  }
+
+  button {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    border: none;
+    transition: background-color $transition-duration ease-in-out;
+  }
+
+  &:hover {
+    button {
+      display: flex;
+    }
+  }
+}

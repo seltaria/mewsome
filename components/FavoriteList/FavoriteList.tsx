@@ -1,13 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { Loader } from "../Loader";
 import { createClient } from "@/utils/supabase/client";
 import styles from "./FavoriteList.module.scss";
 import { toast, ToastContainer } from "react-toastify";
 import { usePagination } from "@/hooks/usePagination";
 import { Pagination } from "../Pagination";
+import { MemeCard } from "../MemeCard";
 
 export const FavoriteList = () => {
   const supabase = createClient();
@@ -70,25 +70,13 @@ export const FavoriteList = () => {
     <div className={styles.wrapper}>
       <div className={styles.list}>
         {favorites.map((el) => (
-          <div key={el.id} className={styles.post}>
-            <button
-              className={styles.button}
-              onClick={() => handleDelete(el.id)}
-              title="Удалить из избранного"
-            >
-              ×
-            </button>
-            <div className={styles.image}>
-              <Image
-                alt="cat"
-                src={el.image_url}
-                fill
-                objectFit="contain"
-                loading="lazy"
-              />
-            </div>
-            <div className={styles.joke}>{decodeURIComponent(el.joke)}</div>
-          </div>
+          <MemeCard
+            key={el.id}
+            handleDelete={handleDelete}
+            id={el.id}
+            imageUrl={el.image_url}
+            joke={el.joke}
+          />
         ))}
         <ToastContainer position="bottom-right" />
       </div>

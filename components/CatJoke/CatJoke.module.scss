@@ -19,6 +19,11 @@
     p {
       text-align: center;
     }
+
+    img {
+      object-fit: contain;
+      object-position: top;
+    }
   }
 }
 

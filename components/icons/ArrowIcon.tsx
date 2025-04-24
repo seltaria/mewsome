@@ -21,14 +21,14 @@ export const ArrowIcon: FC<ArrowIconProps> = ({
       style={{ transform: `rotate(${rotate}deg)` }}
     >
       {type === "single" ? (
-        <g clip-path="url(#clip0_34_2)">
+        <g clipPath="url(#clip0_34_2)">
           <path
             d="M29.64 61.64L48 43.32L66.36 61.64L72 56L48 32L24 56L29.64 61.64Z"
             fill="black"
           />
         </g>
       ) : (
-        <g clip-path="url(#clip0_36_8)">
+        <g clipPath="url(#clip0_36_8)">
           <path
             d="M70.3604 72L76.0004 66.36L57.6804 48L76.0004 29.64L70.3604 24L46.3604 48L70.3604 72Z"
             fill="black"
