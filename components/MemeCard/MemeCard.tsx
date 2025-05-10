@@ -12,6 +12,7 @@ type MemeCardProps = {
   imageUrl: string;
   joke: string;
   handleDelete: (id: string) => void;
+  open?: boolean;
 };
 
 export const MemeCard: FC<MemeCardProps> = ({
@@ -19,6 +20,7 @@ export const MemeCard: FC<MemeCardProps> = ({
   imageUrl,
   joke,
   handleDelete,
+  open,
 }) => {
   const ref = useRef<HTMLDivElement>(null);
 
@@ -41,13 +43,15 @@ export const MemeCard: FC<MemeCardProps> = ({
 
   return (
     <div className={styles.wrapper}>
-      <button
-        className={styles.deleteButton}
-        onClick={() => handleDelete(id)}
-        title="Удалить из избранного"
-      >
-        ×
-      </button>
+      {!open && (
+        <button
+          className={styles.deleteButton}
+          onClick={() => handleDelete(id)}
+          title="Удалить из избранного"
+        >
+          ×
+        </button>
+      )}
       <div className={styles.post} ref={ref}>
         <div className={styles.image}>
           <Image

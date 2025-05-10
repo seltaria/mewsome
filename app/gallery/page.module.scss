@@ -1,0 +1,9 @@
+.description {
+  padding: 10px 100px;
+  text-align: center;
+  font-size: clamp(12px, 14px, 3vw);
+
+  @media (max-width: 500px) {
+    padding: 20px;
+  }
+}

@@ -1,0 +1,27 @@
+@use "@/styles/variables" as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  .input {
+    background: none;
+    border: 1px solid white;
+    border-radius: 4px;
+    padding: 10px 10px;
+  
+    &::placeholder {
+      color: gray;
+    }
+  
+    &.errored {
+      border-color: $red;
+    }
+  }
+  
+  .errorText {
+    color: $red;
+    font-size: 12px;
+  }
+}

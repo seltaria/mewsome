@@ -1,4 +1,4 @@
-@use "../../styles/variables" as *;
+@use "@/styles/variables" as *;
 
 .nav {
   display: flex;
@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  padding: 10px 0;
+  padding: 20px 0;
 
   @media (max-width: 680px) {
     justify-content: space-around;

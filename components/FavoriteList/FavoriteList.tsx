@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Loader } from "../Loader";
 import { createClient } from "@/utils/supabase/client";
 import styles from "./FavoriteList.module.scss";
@@ -9,7 +9,11 @@ import { usePagination } from "@/hooks/usePagination";
 import { Pagination } from "../Pagination";
 import { MemeCard } from "../MemeCard";
 
-export const FavoriteList = () => {
+interface FavoriteListProps {
+  open?: boolean;
+}
+
+export const FavoriteList: FC<FavoriteListProps> = ({ open }) => {
   const supabase = createClient();
   const [favorites, setFavorites] = useState<Record<string, string>[] | null>(
     null
@@ -26,26 +30,43 @@ export const FavoriteList = () => {
         data: { session },
       } = await supabase.auth.getSession();
 
-      const { count } = await supabase
-        .from("favorites")
-        .select("*", { count: "exact", head: true })
-        .eq("user_id", session!.user.id);
+      if (open) {
+        const { count } = await supabase
+          .from("favorites")
+          .select("*", { count: "exact", head: true });
 
-      const { data: favs } = await supabase
-        .from("favorites")
-        .select()
-        .eq("user_id", session!.user.id)
-        .range(
-          (currentPage - 1) * CARDS_PER_PAGE,
-          currentPage * CARDS_PER_PAGE - 1
-        );
+        const { data: favs } = await supabase
+          .from("favorites")
+          .select()
+          .range(
+            (currentPage - 1) * CARDS_PER_PAGE,
+            currentPage * CARDS_PER_PAGE - 1
+          );
 
-      setFavorites(favs);
-      setTotalCount(count);
+        setFavorites(favs);
+        setTotalCount(count);
+      } else {
+        const { count } = await supabase
+          .from("favorites")
+          .select("*", { count: "exact", head: true })
+          .eq("user_id", session!.user.id);
+
+        const { data: favs } = await supabase
+          .from("favorites")
+          .select()
+          .eq("user_id", session!.user.id)
+          .range(
+            (currentPage - 1) * CARDS_PER_PAGE,
+            currentPage * CARDS_PER_PAGE - 1
+          );
+
+        setFavorites(favs);
+        setTotalCount(count);
+      }
     };
 
     getData();
-  }, [currentPage, supabase]);
+  }, [currentPage, open, supabase]);
 
   const handleDelete = async (id: string) => {
     const initialItems = favorites;
@@ -76,6 +97,7 @@ export const FavoriteList = () => {
             id={el.id}
             imageUrl={el.image_url}
             joke={el.joke}
+            open={open}
           />
         ))}
         <ToastContainer position="bottom-right" />

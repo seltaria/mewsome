@@ -11,8 +11,9 @@ import clsx from "clsx";
 
 const links = [
   { href: "/", name: "Главная", auth: null },
-  { href: "/random", name: "Случайный кот", auth: null },
-  { href: "/favorite", name: "Избранное", auth: true },
+  { href: "/random", name: "Случайный котик", auth: null },
+  { href: "/gallery", name: "Все котики", auth: null },
+  { href: "/favorite", name: "Моё избранное", auth: true },
 ];
 
 export const Navigation = () => {
